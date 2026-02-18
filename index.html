@@ -169,7 +169,9 @@
     onclick="
       if (window.tidioChatApi){
         window.tidioChatApi.open();
-        window.tidioChatApi.sendMessage('I want a free roof inspection / estimate.');
+        setTimeout(function(){
+          window.tidioChatApi.messageFromVisitor('I want a free roof inspection / estimate.');
+        }, 400);
       }
     ">
     Request Free Estimate
@@ -179,13 +181,15 @@
     onclick="
       if (window.tidioChatApi){
         window.tidioChatApi.open();
-        window.tidioChatApi.sendMessage('I need help with an insurance claim.');
+        setTimeout(function(){
+          window.tidioChatApi.messageFromVisitor('I need help with an insurance claim.');
+        }, 400);
       }
     ">
     Insurance Help
   </button>
 
-</div>
+</div
   </div>
 
   <div class="card side">
