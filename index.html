@@ -163,15 +163,29 @@
       <li><div class="dot"></div> Emergency Storm Response</li>
     </ul>
 
-    <div class="cta">
-      <button class="btn" onclick="window.tidioChatApi && window.tidioChatApi.open();">
-  Request Free Estimate
-</button>
+   <div class="cta">
 
-<button class="btn secondary" onclick="window.tidioChatApi && window.tidioChatApi.open();">
-  Insurance Help
-</button>
-    </div>
+  <button class="btn"
+    onclick="
+      if (window.tidioChatApi){
+        window.tidioChatApi.open();
+        window.tidioChatApi.sendMessage('I want a free roof inspection / estimate.');
+      }
+    ">
+    Request Free Estimate
+  </button>
+
+  <button class="btn secondary"
+    onclick="
+      if (window.tidioChatApi){
+        window.tidioChatApi.open();
+        window.tidioChatApi.sendMessage('I need help with an insurance claim.');
+      }
+    ">
+    Insurance Help
+  </button>
+
+</div>
   </div>
 
   <div class="card side">
