@@ -5,147 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Summit Plumbing & Services</title>
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    margin:0;
-    padding:0;
-    background:#f7f9fc;
-    color:#0a2f52;
-  }
-
-  header {
-    background: #007bff;
-    color: #fff;
-    text-align: center;
-    padding: 50px 20px;
-  }
-
+  body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f9fc; color:#0a2f52; }
+  header { background: #007bff; color: white; text-align: center; padding: 50px 20px; }
   header h1 { margin:0; font-size:2.5em; }
-  header p { margin:10px 0 0; font-size:1.2em; }
+  header p { margin:10px 0 0 0; font-size:1.2em; }
 
-  .hero {
-    width:100%;
-    height:180px;
-    background: linear-gradient(90deg,#4f8cff,#35d0ba);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    font-size:1.5em;
-    font-weight:bold;
-    text-align:center;
-  }
+  .hero { width:100%; height:180px; background: linear-gradient(90deg,#4f8cff,#35d0ba); display:flex; align-items:center; justify-content:center; color:white; font-size:1.5em; font-weight:bold; text-align:center; }
 
-  .container {
-    max-width:1000px;
-    margin:40px auto;
-    padding:0 20px;
-  }
+  .container { max-width:1000px; margin:40px auto; padding:0 20px; }
 
-  /* Services Section */
-  .services-container {
-    text-align:center;
-    margin-bottom:50px;
-  }
-
+  .services-container { text-align:center; margin-bottom:50px; }
   .services-container h2 { font-size:28px; margin-bottom:25px; }
+  .services { display:flex; flex-wrap:wrap; gap:25px; justify-content:center; }
+  .service { display:flex; flex-direction:column; align-items:center; text-align:center; background:white; border-radius:12px; padding:20px; width:180px; box-shadow:0 4px 12px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s; }
+  .service:hover { transform: translateY(-5px); box-shadow:0 8px 25px rgba(0,0,0,0.12); }
+  .service .icon { font-size:48px; margin-bottom:15px; }
+  .service span { font-weight:600; }
 
-  .services {
-    display:flex;
-    flex-wrap:wrap;
-    gap:25px;
-    justify-content:center;
-  }
+  .stats-container { display:flex; flex-wrap:wrap; justify-content:center; gap:25px; margin-bottom:50px; text-align:center; }
+  .stat { background:white; border-radius:12px; padding:20px; width:200px; box-shadow:0 4px 12px rgba(0,0,0,0.08); font-weight:bold; font-size:1.1em; }
+  .stat span { display:block; font-size:36px; color:#007bff; margin-bottom:10px; }
 
-  .service {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-    background:white;
-    border-radius:12px;
-    padding:20px;
-    width:180px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.08);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  .service:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-  }
-
-  .service .icon {
-    font-size:48px;
-    margin-bottom:15px;
-  }
-
-  .service span {
-    font-weight:600;
-  }
-
-  /* Stats Section */
-  .stats-container {
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:25px;
-    margin-bottom:50px;
-    text-align:center;
-  }
-
-  .stat {
-    background:white;
-    border-radius:12px;
-    padding:20px;
-    width:200px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.08);
-    font-weight:bold;
-    font-size:1.1em;
-  }
-
-  .stat span {
-    display:block;
-    font-size:36px;
-    color:#007bff;
-    margin-bottom:10px;
-  }
-
-  /* CTA Buttons */
-  .cta-buttons {
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:15px;
-    margin-bottom:50px;
-  }
-
-  .btn {
-    padding:14px 25px;
-    font-size:16px;
-    font-weight:600;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    background: linear-gradient(90deg,#4f8cff,#35d0ba);
-    color:white;
-    transition:transform 0.2s, background 0.3s;
-  }
-
+  .cta-buttons { display:flex; justify-content:center; flex-wrap:wrap; gap:15px; margin-bottom:50px; }
+  .btn { padding:14px 25px; font-size:16px; font-weight:600; border:none; border-radius:8px; cursor:pointer; background: linear-gradient(90deg,#4f8cff,#35d0ba); color:white; transition:transform 0.2s, background 0.3s; }
   .btn:hover { transform:scale(1.05); }
-
-  .btn.secondary {
-    background:#6c757d;
-  }
-
+  .btn.secondary { background:#6c757d; }
   .btn.secondary:hover { background:#495057; }
 
-  footer {
-    background:#0a2f52;
-    color:white;
-    text-align:center;
-    padding:30px 20px;
-  }
+  footer { background:#0a2f52; color:white; text-align:center; padding:30px 20px; }
 </style>
 </head>
 <body>
@@ -166,48 +53,24 @@
     <h2>Our Plumbing Services</h2>
     <div class="services">
 
-      <div class="service">
-        <div class="icon">🚰</div>
-        <span>Faucet & Fixture Repairs</span>
-      </div>
-
-      <div class="service">
-        <div class="icon">⚡</div>
-        <span>Emergency Plumbing</span>
-      </div>
-
-      <div class="service">
-        <div class="icon">🔧</div>
-        <span>Pipe Replacement</span>
-      </div>
-
-      <div class="service">
-        <div class="icon">💧</div>
-        <span>Leak Detection</span>
-      </div>
+      <div class="service"><div class="icon">🚰</div><span>Faucet & Fixture Repairs</span></div>
+      <div class="service"><div class="icon">⚡</div><span>Emergency Plumbing</span></div>
+      <div class="service"><div class="icon">🔧</div><span>Pipe Replacement</span></div>
+      <div class="service"><div class="icon">💧</div><span>Leak Detection</span></div>
 
     </div>
   </div>
 
   <!-- Stats Section -->
   <div class="stats-container">
-    <div class="stat">
-      <span>✔</span>
-      Licensed & Insured
-    </div>
-    <div class="stat">
-      <span>10+</span>
-      Years Experience
-    </div>
+    <div class="stat"><span>✔</span>Licensed & Insured</div>
+    <div class="stat"><span>10+</span>Years Experience</div>
   </div>
 
   <!-- Call-to-Action Buttons -->
   <div class="cta-buttons">
-    <button class="btn" 
-      onclick="if(window.tidioChatApi){window.tidioChatApi.open(); setTimeout(function(){window.tidioChatApi.messageFromVisitor('I want a free plumbing estimate.');},400);}">Request Free Estimate</button>
-
-    <button class="btn secondary" 
-      onclick="if(window.tidioChatApi){window.tidioChatApi.open(); setTimeout(function(){window.tidioChatApi.messageFromVisitor('I need help with an emergency plumbing issue.');},400);}">Emergency Help</button>
+    <button class="btn" onclick="logAndChat('I want a free plumbing estimate.')">Request Free Estimate</button>
+    <button class="btn secondary" onclick="logAndChat('I need help with an emergency plumbing issue.')">Emergency Help</button>
   </div>
 
 </div>
@@ -216,7 +79,32 @@
   <p>&copy; 2026 Summit Plumbing & Services. All Rights Reserved.</p>
 </footer>
 
-<!-- Tidio Script -->
+<!-- Logging function for Google Sheets + Tidio chat -->
+<script>
+const GOOGLE_SCRIPT_URL = https://script.google.com/macros/s/AKfycbwrE6xTmXejPxYNs7pyBX8B0RPeTcwIreT6AVXndpHLxRMUTSt8XZmI7fsjy4YCya7euw/exec
+
+function logAndChat(message){
+  // Send to Google Sheets
+  fetch(GOOGLE_SCRIPT_URL, {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      name:'Anonymous',
+      email:'',
+      message: message,
+      page: window.location.href
+    })
+  }).catch(console.error);
+
+  // Open Tidio chat
+  if(window.tidioChatApi){
+    window.tidioChatApi.open();
+    setTimeout(()=>{ window.tidioChatApi.messageFromVisitor(message); }, 400);
+  }
+}
+</script>
+
+<!-- Tidio Widget -->
 <script src="//code.tidio.co/pddapld5luidryqzworjlwzozguffl8o.js" async></script>
 
 </body>
