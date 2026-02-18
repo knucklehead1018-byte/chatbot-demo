@@ -6,15 +6,16 @@
 <title>Summit Plumbing & Services</title>
 <style>
   body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f9fc; color:#0a2f52; }
-  header { background: #007bff; color: white; text-align: center; padding: 50px 20px; }
+  header { background: #007bff; color: white; text-align: center; padding: 40px 20px; }
   header h1 { margin:0; font-size:2.5em; }
   header p { margin:10px 0 0 0; font-size:1.2em; }
 
-  .hero { width:100%; height:180px; background: linear-gradient(90deg,#4f8cff,#35d0ba); display:flex; align-items:center; justify-content:center; color:white; font-size:1.5em; font-weight:bold; text-align:center; }
+  .hero { width:100%; height:150px; background: linear-gradient(90deg,#4f8cff,#35d0ba); display:flex; align-items:center; justify-content:center; color:white; font-size:1.5em; font-weight:bold; text-align:center; }
 
   .container { max-width:1000px; margin:40px auto; padding:0 20px; }
 
-  .services-container { text-align:center; margin-bottom:50px; }
+  /* Services Section */
+  .services-container { text-align:center; margin-bottom:40px; }
   .services-container h2 { font-size:28px; margin-bottom:25px; }
   .services { display:flex; flex-wrap:wrap; gap:25px; justify-content:center; }
   .service { display:flex; flex-direction:column; align-items:center; text-align:center; background:white; border-radius:12px; padding:20px; width:180px; box-shadow:0 4px 12px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s; }
@@ -22,11 +23,13 @@
   .service .icon { font-size:48px; margin-bottom:15px; }
   .service span { font-weight:600; }
 
-  .stats-container { display:flex; flex-wrap:wrap; justify-content:center; gap:25px; margin-bottom:50px; text-align:center; }
+  /* Stats Section */
+  .stats-container { display:flex; flex-wrap:wrap; justify-content:center; gap:25px; margin-bottom:40px; text-align:center; }
   .stat { background:white; border-radius:12px; padding:20px; width:200px; box-shadow:0 4px 12px rgba(0,0,0,0.08); font-weight:bold; font-size:1.1em; }
   .stat span { display:block; font-size:36px; color:#007bff; margin-bottom:10px; }
 
-  .cta-buttons { display:flex; justify-content:center; flex-wrap:wrap; gap:15px; margin-bottom:50px; }
+  /* CTA Buttons */
+  .cta-buttons { display:flex; justify-content:center; flex-wrap:wrap; gap:15px; margin-bottom:40px; }
   .btn { padding:14px 25px; font-size:16px; font-weight:600; border:none; border-radius:8px; cursor:pointer; background: linear-gradient(90deg,#4f8cff,#35d0ba); color:white; transition:transform 0.2s, background 0.3s; }
   .btn:hover { transform:scale(1.05); }
   .btn.secondary { background:#6c757d; }
@@ -79,32 +82,37 @@
   <p>&copy; 2026 Summit Plumbing & Services. All Rights Reserved.</p>
 </footer>
 
-<!-- Logging function for Google Sheets + Tidio chat -->
+<!-- Logging + Tidio Chat -->
 <script>
 const GOOGLE_SCRIPT_URL = https://script.google.com/macros/s/AKfycbwrE6xTmXejPxYNs7pyBX8B0RPeTcwIreT6AVXndpHLxRMUTSt8XZmI7fsjy4YCya7euw/exec
 
 function logAndChat(message){
-  // Send to Google Sheets
-  fetch(GOOGLE_SCRIPT_URL, {
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({
-      name:'Anonymous',
-      email:'',
-      message: message,
-      page: window.location.href
-    })
-  }).catch(console.error);
-
-  // Open Tidio chat
-  if(window.tidioChatApi){
-    window.tidioChatApi.open();
-    setTimeout(()=>{ window.tidioChatApi.messageFromVisitor(message); }, 400);
+  // Log to Google Sheets
+  if(GOOGLE_SCRIPT_URL){
+    fetch(GOOGLE_SCRIPT_URL, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        name:'Anonymous',
+        email:'',
+        message: message,
+        page: window.location.href
+      })
+    }).then(r=>r.json()).then(d=>console.log('Logged', d)).catch(err=>console.error('Log error', err));
   }
+
+  // Wait for Tidio to load
+  const tidioReady = setInterval(() => {
+    if(window.tidioChatApi){
+      window.tidioChatApi.open();
+      setTimeout(()=>{ window.tidioChatApi.messageFromVisitor(message); },200);
+      clearInterval(tidioReady);
+    }
+  }, 200);
 }
 </script>
 
-<!-- Tidio Widget -->
+<!-- Tidio Script -->
 <script src="//code.tidio.co/pddapld5luidryqzworjlwzozguffl8o.js" async></script>
 
 </body>
