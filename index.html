@@ -5,206 +5,195 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ClearFlow Plumbing</title>
 
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --bg:#0b1220;
-    --card:#0f1a33;
-    --text:#eaf0ff;
-    --muted:#b9c4e2;
-    --accent:#4f8cff;
-    --accent2:#35d0ba;
-  }
-
-  *{box-sizing:border-box}
-  body{
+  body {
     margin:0;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    color:var(--text);
-    background:
-      radial-gradient(1200px 600px at 20% 10%, rgba(79,140,255,.35), transparent 60%),
-      radial-gradient(900px 500px at 90% 30%, rgba(53,208,186,.25), transparent 55%),
-      linear-gradient(180deg, var(--bg), #070b14);
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:28px;
+    font-family: 'Poppins', sans-serif;
+    background:#f5f5f5;
+    color:#222;
   }
 
-  .wrap{
-    width:min(920px, 100%);
-    display:grid;
-    grid-template-columns: 1.2fr .8fr;
-    gap:18px;
-  }
-
-  .card{
-    background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-    border:1px solid rgba(255,255,255,.10);
-    border-radius:18px;
-    padding:22px;
-    box-shadow: 0 20px 60px rgba(0,0,0,.35);
-    backdrop-filter: blur(8px);
-  }
-
-  h1{
-    margin:0 0 10px;
-    font-size: clamp(26px, 3vw, 36px);
-    line-height:1.15;
-  }
-
-  p{
-    margin:0 0 14px;
-    color:var(--muted);
-    font-size:16px;
-    line-height:1.55;
-  }
-
-  .badge{
-    display:inline-flex;
-    padding:8px 12px;
-    border-radius:999px;
-    background: rgba(79,140,255,.14);
-    border:1px solid rgba(79,140,255,.30);
-    font-weight:600;
-    font-size:13px;
-    margin-bottom:12px;
-  }
-
-  .list{
-    margin:14px 0 0;
-    padding:0;
-    list-style:none;
-    display:grid;
-    gap:10px;
-  }
-
-  .list li{
-    display:flex;
-    gap:10px;
-    padding:10px 12px;
-    border-radius:14px;
-    background: rgba(15,26,51,.6);
-    border: 1px solid rgba(255,255,255,.08);
-  }
-
-  .dot{
-    width:10px;height:10px;border-radius:999px;
-    background: linear-gradient(180deg, var(--accent), var(--accent2));
-    margin-top:5px;
-  }
-
-  .cta{
-    margin-top:14px;
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-  }
-
-  .btn{
-    border:0;
-    border-radius:14px;
-    padding:12px 14px;
-    font-weight:800;
-    cursor:pointer;
-    background: linear-gradient(180deg, var(--accent), #2f6fff);
+  header {
+    background: linear-gradient(90deg,#4f8cff,#35d0ba);
     color:white;
+    padding:20px;
+    text-align:center;
   }
 
-  .btn.secondary{
-    background: rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.12);
-    color:var(--text);
+  header h1 { margin:0; font-size:2em; }
+  header p { margin:5px 0 0; font-weight:400; }
+
+  /* Hero Carousel */
+  .hero-carousel {
+    position: relative;
+    width: 100%;
+    max-height:400px;
+    overflow:hidden;
   }
 
-  .side h2{
-    margin:0 0 10px;
-    font-size:16px;
+  .hero-carousel img {
+    width:100%;
+    height:400px;
+    object-fit:cover;
+    position:absolute;
+    top:0;
+    left:0;
+    opacity:0;
+    transition: opacity 1s ease-in-out;
   }
 
-  .stat{
+  .hero-carousel img.active { opacity:1; }
+
+  .container { max-width:1000px; margin:40px auto; padding:0 20px; }
+
+  .section { margin-bottom:40px; }
+
+  .section h2 { font-size:1.8em; margin-bottom:10px; }
+  .section p { font-size:1em; line-height:1.5; color:#555; }
+
+  .services {
     display:grid;
-    gap:10px;
-    margin-top:12px;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:20px;
   }
 
-  .row{
-    padding:12px;
-    border-radius:14px;
-    background: rgba(15,26,51,.6);
-    border: 1px solid rgba(255,255,255,.08);
-    font-size:13px;
+  .service-card {
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.1);
+    text-align:center;
+    transition: transform 0.3s, box-shadow 0.3s;
   }
 
-  @media (max-width: 820px){
-    .wrap{ grid-template-columns: 1fr; }
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow:0 12px 25px rgba(0,0,0,0.15);
   }
+
+  .service-card img { width:60px; margin-bottom:10px; }
+
+  .cta-buttons { margin-top:20px; display:flex; flex-wrap:wrap; gap:15px; }
+
+  .btn {
+    padding:14px 20px;
+    border:none;
+    border-radius:8px;
+    font-weight:600;
+    cursor:pointer;
+    background: linear-gradient(90deg,#4f8cff,#35d0ba);
+    color:white;
+    transition: transform 0.2s, background 0.3s;
+  }
+
+  .btn:hover { transform:scale(1.05); background: linear-gradient(90deg,#35d0ba,#4f8cff); }
+
+  .secondary {
+    background:#eee;
+    color:#222;
+  }
+
+  footer { background:#222; color:white; text-align:center; padding:15px; }
+  footer p { margin:5px 0; font-size:0.9em; }
+
 </style>
 </head>
-
 <body>
 
-<div class="wrap">
+<header>
+  <h1>ClearFlow Plumbing</h1>
+  <p>Fast, Reliable Plumbing Services – 24/7 Support</p>
+</header>
 
-  <div class="card">
-    <div class="badge">Free Same-Day Estimates</div>
+<div class="hero-carousel">
+  <img src="https://images.unsplash.com/photo-1598887142481-544c4a7a2a4b?auto=format&fit=crop&w=1500&q=80" class="active" alt="Plumber at work">
+  <img src="https://images.unsplash.com/photo-1576675782763-8a3d7f1ebf40?auto=format&fit=crop&w=1500&q=80" alt="Pipe repair">
+  <img src="https://images.unsplash.com/photo-1581090700227-827ba6c1f3ee?auto=format&fit=crop&w=1500&q=80" alt="Plumber tools">
+</div>
 
-    <h1>ClearFlow Plumbing — Fast, Reliable Plumbing Services</h1>
+<div class="container">
 
-    <p>
-     Leaky faucet? Clogged drain? Burst pipe? Chat with us below to request service, ask a question, or get emergency help 24/7.
-    </p>
-
-    <ul class="list">
-      <li><div class="dot"></div> Drain Cleaning & Unclogging</li>
-      <li><div class="dot"></div> Faucet & Fixture Repairs</li>
-      <li><div class="dot"></div> Water Heater Installations & Repairs</li>
-      <li><div class="dot"></div> Emergency Plumbing Services</li>
-    </ul>
-
-   <div class="cta">
-
-  <button class="btn"
-    onclick="
-      if (window.tidioChatApi){
-        window.tidioChatApi.open();
-        setTimeout(function(){
-          window.tidioChatApi.messageFromVisitor('I want a free roof inspection / estimate.');
-        }, 400);
-      }
-    ">
-    Request Service
-  </button>
-
-  <button class="btn secondary"
-    onclick="
-      if (window.tidioChatApi){
-        window.tidioChatApi.open();
-        setTimeout(function(){
-          window.tidioChatApi.messageFromVisitor('I need help with an insurance claim.');
-        }, 400);
-      }
-    ">
-    Emergency Help
-  </button>
-
-</div
+  <div class="section">
+    <h2>Our Services</h2>
+    <p>We handle all plumbing issues for your home or business, big or small.</p>
+    <div class="services">
+      <div class="service-card">
+        <img src="https://img.icons8.com/fluency/48/000000/wrench.png"/>
+        <h3>Drain Cleaning</h3>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/fluency/48/000000/faucet.png"/>
+        <h3>Faucet & Fixture Repairs</h3>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/fluency/48/000000/water-heater.png"/>
+        <h3>Water Heater Service</h3>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/fluency/48/000000/emergency-call.png"/>
+        <h3>Emergency Plumbing</h3>
+      </div>
+    </div>
   </div>
 
-  <div class="card side">
-    <h2>Why Homeowners Choose Us</h2>
+  <div class="section">
+    <h2>Get Help Now</h2>
+    <p>Click a button below to chat with our team instantly:</p>
+    <div class="cta-buttons">
+      <button class="btn" 
+        onclick="
+          if(window.tidioChatApi){
+            window.tidioChatApi.open();
+            setTimeout(function(){
+              window.tidioChatApi.messageFromVisitor('I need plumbing service');
+            },400);
+          }">Request Service</button>
 
-    <div class="stat">
-      <div class="row">✔ Licensed & Insured Plumbers</div>
-      <div class="row">✔ 10+ Years Experience</div>
-      <div class="row">✔ 5-Star Local Reviews</div>
-      <div class="row">✔ Same-Day Service Available</div>
+      <button class="btn secondary" 
+        onclick="
+          if(window.tidioChatApi){
+            window.tidioChatApi.open();
+            setTimeout(function(){
+              window.tidioChatApi.messageFromVisitor('I have an emergency plumbing issue');
+            },400);
+          }">Emergency Help</button>
+
+      <button class="btn secondary" 
+        onclick="
+          if(window.tidioChatApi){
+            window.tidioChatApi.open();
+          }">Ask a Question</button>
     </div>
+  </div>
+
+  <div class="section">
+    <h2>Why Choose Us</h2>
+    <p>Licensed & Insured Plumbers | 10+ Years Experience | 5-Star Local Reviews | Same-Day Service Available</p>
   </div>
 
 </div>
 
-<!-- TIDIO SCRIPT GOES BELOW -->
+<footer>
+  <p>ClearFlow Plumbing – (555) 123-4567 – info@clearflowplumbing.com</p>
+  <p>Serving [Your City/Region]</p>
+</footer>
+
+<!-- Hero carousel JS -->
+<script>
+  const slides = document.querySelectorAll('.hero-carousel img');
+  let current = 0;
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 4000);
+</script>
+
+<!-- TIDIO SCRIPT -->
 <script src="//code.tidio.co/pddapld5luidryqzworjlwzozguffl8o.js" async></script>
 
 </body>
