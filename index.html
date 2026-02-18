@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Summit Plumbing Services</title>
+  <title>Summit Plumbing & Services</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -80,41 +80,30 @@
       font-weight: 600;
     }
 
-    /* Pricing Section */
-    .pricing-container {
-      text-align: center;
+    /* Stats Section */
+    .stats-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
       margin-bottom: 50px;
     }
 
-    .pricing-container h2 {
-      font-size: 28px;
-      margin-bottom: 25px;
-    }
-
-    .pricing {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .price-card {
+    .stat {
       background-color: #fff;
       border-radius: 12px;
       padding: 20px;
-      width: 220px;
+      width: 200px;
+      text-align: center;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
-    .price-card h3 {
-      margin-top: 0;
+    .stat span {
+      font-size: 36px;
+      font-weight: bold;
+      color: #007bff;
+      display: block;
       margin-bottom: 10px;
-      font-size: 20px;
-    }
-
-    .price-card p {
-      margin: 0;
-      font-size: 16px;
     }
 
     /* CTA Buttons */
@@ -170,48 +159,37 @@
       <div class="services">
 
         <div class="service">
-          <img src="images/faucet.png" alt="Faucet & Fixture Repairs">
+          <img src="https://img.icons8.com/color/96/000000/faucet.png" alt="Faucet & Fixture Repairs">
           <span>Faucet & Fixture Repairs</span>
         </div>
 
         <div class="service">
-          <img src="images/emergency.png" alt="Emergency Plumbing">
+          <img src="https://img.icons8.com/color/96/000000/emergency.png" alt="Emergency Plumbing">
           <span>Emergency Plumbing</span>
         </div>
 
         <div class="service">
-          <img src="images/pipe.png" alt="Pipe Replacement">
+          <img src="https://img.icons8.com/color/96/000000/pipe.png" alt="Pipe Replacement">
           <span>Pipe Replacement</span>
         </div>
 
         <div class="service">
-          <img src="images/leak.png" alt="Leak Detection">
+          <img src="https://img.icons8.com/color/96/000000/leak.png" alt="Leak Detection">
           <span>Leak Detection</span>
         </div>
 
       </div>
     </div>
 
-    <!-- Pricing Section -->
-    <div class="pricing-container">
-      <h2>Pricing</h2>
-      <div class="pricing">
-        <div class="price-card">
-          <h3>Faucet & Fixture Repairs</h3>
-          <p>Starting at $75</p>
-        </div>
-        <div class="price-card">
-          <h3>Emergency Plumbing</h3>
-          <p>Starting at $120</p>
-        </div>
-        <div class="price-card">
-          <h3>Pipe Replacement</h3>
-          <p>Starting at $200</p>
-        </div>
-        <div class="price-card">
-          <h3>Leak Detection</h3>
-          <p>Starting at $90</p>
-        </div>
+    <!-- Stats Section -->
+    <div class="stats-container">
+      <div class="stat">
+        <span>✔</span>
+        Licensed & Insured Contractors
+      </div>
+      <div class="stat">
+        <span>10+</span>
+        Years Experience
       </div>
     </div>
 
